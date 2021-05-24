@@ -1,0 +1,33 @@
+
+ <table class="table table-striped tableClass">
+    <tbody>
+      <tr>
+        <td>{{index}}</td>
+        <th scope="row">
+          <img
+            [src]="task.taskImage"
+            alt="{{ task.taskName }}"
+            class="img-responsive rounded-circle"
+            style="max-height: 50px"
+          />
+          {{ task.taskName }}
+        </th>
+        <td><input
+          type="checkbox"
+          name="todoCheckbox"
+          [(ngModel)]="deleteSelectedTasks"
+          title="Selected to Deleted"
+          (ngModelChange)="onSelected(task)"
+        /></td>
+        <td><button
+          class="btn btn-primary active"
+          type="button"
+          [routerLink] = "[index]"
+          routerLinkActive="active"
+        >
+          View Details
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+

@@ -1,0 +1,8 @@
+.filterClass{
+  display: inline-block;
+  width:25%;
+}
+.headerClass{
+  display: flex;
+  justify-content: space-between;
+}

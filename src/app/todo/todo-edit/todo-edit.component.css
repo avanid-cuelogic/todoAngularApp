@@ -1,0 +1,18 @@
+.displayFlex{
+  display: flex;
+}
+.removePadding{
+  padding:0;
+}
+.buttonStyle{
+  width: 30%;
+  height: 50px;
+}
+.editForm{
+  text-align: center;
+  padding: .5rem 1rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+
+}

@@ -1,0 +1,158 @@
+<div class="editForm">
+Todo Edit Form
+</div>
+      <form [formGroup]="todoForm" (ngSubmit)="onSave()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskName">TaskName</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="taskName"
+              id="taskName"
+              [class.is-invalid]="todoForm.get('taskName').touched && !todoForm.get('taskName').valid"
+            />
+            <small class="form-text  alert alert-danger removePadding"
+              *ngIf="
+                todoForm.get('taskName').touched && !todoForm.get('taskName').valid
+              "
+            >
+              Required to Enter a task name
+            </small>
+          </div>
+        </div>
+        <div class="form-row displayFlex">
+          <div class="form-group col-md-6">
+            <label for="category">Category</label>
+            <select
+              id="category"
+              class="form-control"
+              formControlName="category"
+              name="category"
+              [class.is-invalid]="todoForm.get('category').touched && !todoForm.get('category').valid"
+            >
+              <option value="personal">Personal</option>
+              <option value="cooking">Cooking</option>
+              <option value="professional">Professional</option>
+            </select>
+            <small class="form-text alert alert-danger removePadding"
+              *ngIf="
+                todoForm.get('category').touched && !todoForm.get('category').valid
+              "
+            >
+              Required to Select Category
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="status">Status</label>
+            <select
+              id="status"
+              class="form-control"
+              formControlName="status"
+              name="status"
+              [class.is-invalid]="todoForm.get('status').touched && !todoForm.get('status').valid"
+            >
+              <option value="completed">Completed</option>
+              <option value="notcompleted">Not Completed</option>
+              <option value="hold">On Hold</option>
+            </select>
+            <small class="form-text alert alert-danger removePadding"
+              *ngIf="todoForm.get('status').touched && !todoForm.get('status').valid"
+            >
+              Required to set the task status
+            </small>
+          </div>
+        </div>
+        <div class="form-row displayFlex">
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isPublic"
+                name="isPublic"
+                formControlName="isPublic"
+              />
+              <label class="form-check-label" for="isPublic"> Public </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="date">Due - Date</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="date"
+              id="date"
+              [class.is-invalid]="todoForm.get('date').touched && !todoForm.get('date').valid"
+            />
+            <small
+              class="form-text alert alert-danger removePadding"
+              *ngIf="todoForm.get('date').touched && !todoForm.get('date').valid"
+            >
+              Required To choose Due Date
+            </small>
+          </div>
+          <div class="form-group col-md-2"></div>
+          <div class="form-group col-md-2">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="needReminder"
+                name="needReminder"
+                #needReminder
+                formControlName="needReminder"
+              />
+              <label class="form-check-label" for="needReminder">
+                Need Reminder
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div
+            class="form-group col-md-3"
+            *ngIf="todoForm.get('needReminder').value === true ? true : false"
+          >
+            <label for="reminderDate">Reminder - Date</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="reminderDate"
+              id="reminderDate"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskImage">Image</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="taskImage"
+              id="taskImage"
+              #taskImage
+            />
+          </div>
+          <div class="form-group">
+            <img
+              [src]="taskImage.value"
+              class="img-responsive"
+              style="max-width: 200px; max-height: 150px"
+            />
+          </div>
+        </div>
+        <div class="form-row displayFlex" style="
+        justify-content: space-between;
+    ">
+          <button
+          [disabled]="!todoForm.valid"
+          type="submit"
+          class="btn btn-success buttonStyle"
+        >
+          Save
+        </button>
+        <button type="button" class="btn btn-danger buttonStyle" (click)="onCancel()">
+          Cancel
+        </button>
+        </div>
+      </form>

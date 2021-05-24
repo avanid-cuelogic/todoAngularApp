@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="headerClass">
+      <h3 class="">TodoTask Lists</h3>
+      <button class="btn btn-success" (click)="newTodoTask()">
+        + Create New Task-ToDo
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div class="">
+    <div class="">
+      <div class="filterClass">
+        <div><label>Search according to due date</label></div>
+        <input
+          id="filterDate"
+          type="date"
+          class="task-btn"
+          placeholder="Search task by "
+          [(ngModel)]="filterDate"
+        />
+      </div>
+      <div class="filterClass">
+        <select
+          id="categoryFilter"
+          class=""
+          name="filterCategory"
+          [(ngModel)]="filterCategory"
+        >
+          <option value="">Search by Category...</option>
+          <option value="personal">Personal</option>
+          <option value="cooking">Cooking</option>
+          <option value="professional">Professional</option>
+        </select>
+      </div>
+      <div class="filterClass">
+        <select
+          id="statusFilter"
+          class=""
+          name="status"
+          [(ngModel)]="filterStatus"
+        >
+          <option value="">Search by Status...</option>
+          <option value="completed">Completed</option>
+          <option value="notcompleted">Not Completed</option>
+          <option value="hold">On Hold</option>
+        </select>
+      </div>
+      <div class="filterClass">
+        <button
+          [disabled]="tasksToDelete.length < 1 "
+          type="button"
+          id="deleteTask"
+          class="btn btn-danger"
+          (click)="deleteSelectedTasks()"
+        >
+          - Delete Selected Tasks
+        </button>
+      </div>
+    </div>
+    <hr />
+
+    <app-todo-item
+      (selectedTask)="selectedTask($event)"
+      *ngFor="
+        let task of tasks
+          | dateFilter: filterDate:'date'
+          | filter: filterCategory:'category'
+          | filter: filterStatus:'status';"
+      [task]="task"
+      [index]="task.taskId">
+      >
+    </app-todo-item>
+  </div>
+</div>
+<app-alert *ngIf="errorMessage && checked" [message]="errorMessage" (close)="onCloseAlert()"></app-alert>

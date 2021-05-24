@@ -1,0 +1,10 @@
+.headerClass{
+  display: flex;
+  justify-content: space-between;
+}
+.displayFlex{
+  display: flex;
+}
+.removePadding{
+padding:0;
+}

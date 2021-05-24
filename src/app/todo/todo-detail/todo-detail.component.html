@@ -1,0 +1,48 @@
+
+<div class="card mb-3 cardClass">
+  <div class="card-header" style="text-align: center">
+    {{ task.taskName }}
+  </div>
+  <div class="card-body">
+    <img
+      [src]="task.taskImage"
+      alt="{{ task.taskName }}"
+      class="img-responsive"
+      style="max-height: 300px; width: 200px"
+    />
+    <h6 class="card-text">Status:{{ task.status }}</h6>
+    <h6 class="card-text">Due-Date: {{ task.date }}</h6>
+    <div class="card-text" *ngIf="task.taskCreatedBy == userName" style="position: relative;">
+        <div class="btn-group" style="position: absolute;right: 0%;">
+          <button
+            type="button"
+            data-toggle="dropdown"
+            class="btn btn-primary dropdown-toggle show"
+          >
+            Manage Task <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu addMargin">
+            <li class="dropdown-item">
+              <a style="cursor: pointer" (click)="editTask()">Edit Task</a>
+            </li>
+            <li class="dropdown-item">
+              <a style="cursor: pointer" (click)="deleteTask()">Delete Task</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <div>
+      <p class="card-text">
+        {{ task.needReminder ? task.reminderDate : "Reminder Not Set" }}
+      </p>
+      <p class="card-text">
+        {{ task.isPublic ? "Can be viewed by Everyone" : "Private" }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">
+        Created By:{{ task.taskCreatedBy }} </small
+      >
+    </div>
+  </div>
+</div>

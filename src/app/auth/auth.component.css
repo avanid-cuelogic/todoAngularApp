@@ -1,0 +1,14 @@
+.removePadding{
+  padding:0;
+}
+.formClass{
+  width: 65%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.divClass{
+  display: block;
+    text-align: center;
+}
