@@ -8,8 +8,9 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() optionSelected = new EventEmitter();
-  
+
   isAuthenticated =false;
+  isShown = false;
   private userSubscription: any;
   constructor(private authService: AuthService){}
     // private dataStorage: DataStorageService, private authService: AuthService) { }
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.isAuthenticated = !!data;
     });
   }
- 
+
   logout(){
     this.authService.logout();
   }

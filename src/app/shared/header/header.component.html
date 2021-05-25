@@ -1,19 +1,40 @@
-
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Todo_App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li routerLinkActive="active" *ngIf = "isAuthenticated" ><a routerLink="/todo">Todo Tasks</a></li>
-            <li routerLinkActive="active" *ngIf = "!isAuthenticated"><a routerLink="/auth">Authenticatation</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" *ngIf = "isAuthenticated">
-            <li class="nav-item px-2 "><a style="cursor: pointer;" role="button" (click)="logout()">Logout </a></li>
-            <li class="nav-item px-2 "><a style="cursor: pointer;" routerLink="/profile" >Profile </a></li>
-          </ul>
-      </div>
+<nav
+  class="navbar navbar-expand-lg navbar-light"
+  style="background-color: #e3f2fd"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Todo_App</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="isShown=!isShown"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngClass]="{ 'show': isShown }">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/todo">Todo Tasks</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a routerLink="/auth">Authenticatation</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="isAuthenticated">
+        <li class="nav-item px-2">
+          <a style="cursor: pointer" role="button" (click)="logout()"
+            >Logout
+          </a>
+        </li>
+        <li class="nav-item px-2">
+          <a style="cursor: pointer" routerLink="/profile">Profile </a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
